@@ -79,6 +79,8 @@ academic-credential-ocr/
    pip install -r requirements.txt
    ```
    
+   This will install all required packages, including **SQLAlchemy** (needed for database support). If you see a `ModuleNotFoundError: No module named 'sqlalchemy'`, make sure to re-run the above command inside your virtual environment.
+   
    **Important:** If you encounter an error about `PIL.Image` and `ANTIALIAS`, downgrade Pillow to 9.5.0:
    ```bash
    pip install pillow==9.5.0
