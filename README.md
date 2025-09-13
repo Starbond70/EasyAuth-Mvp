@@ -73,9 +73,15 @@ academic-credential-ocr/
    source venv/bin/activate
    ```
 
+
 3. **Install dependencies:**
    ```bash
    pip install -r requirements.txt
+   ```
+   
+   **Important:** If you encounter an error about `PIL.Image` and `ANTIALIAS`, downgrade Pillow to 9.5.0:
+   ```bash
+   pip install pillow==9.5.0
    ```
 
 4. **Start the backend server:**
@@ -95,6 +101,16 @@ academic-credential-ocr/
 2. **Install dependencies:**
    ```bash
    npm install
+   ```
+
+   If you see errors about Tailwind CSS and PostCSS, make sure your `postcss.config.js` contains:
+   ```js
+   module.exports = {
+     plugins: [
+       require('tailwindcss'),
+       require('autoprefixer'),
+     ],
+   };
    ```
 
 3. **Start the development server:**
@@ -258,7 +274,13 @@ npm test
 - Verify file format is supported
 - Ensure sufficient disk space
 
-### Debug Mode
+
+### Debug Mode & Troubleshooting
+
+**Common Issues Fixed in This Version:**
+- Pillow 10+ breaks some OCR dependencies. Downgrade to Pillow 9.5.0 if you see `ANTIALIAS` errors.
+- Tailwind CSS/PostCSS plugin errors: use the config above and update all related packages to latest.
+- Clear `__pycache__` if you see persistent Python errors after upgrades.
 
 Enable debug logging in the backend by setting:
 ```python
